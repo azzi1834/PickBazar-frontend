@@ -1,0 +1,26 @@
+body {
+    background-color: rgba(151, 161, 161, 0.1);
+}
+
+.loginForm {
+    background-color: white;
+    /* margin: 0% 30%; */
+}
+
+.heading {
+    color: lightslategray;
+    margin: 30px 0px;
+}
+
+.loginButton {
+    background-color: rgb(56, 148, 118);
+    margin-top: 20px;
+}
+
+.loginButton:hover {
+    background-color: rgb(33, 102, 79);
+}
+
+.divider {
+    color: rgb(3, 46, 88);
+}
