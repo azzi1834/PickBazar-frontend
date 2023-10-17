@@ -13,7 +13,7 @@ import {
   Divider,
   Typography,
 } from "antd";
-import classes from "./Login.module.css";
+import classes from "./Auth.module.css";
 import websiteLogo from "./../../../Images/PickBazar.webp";
 export default function Login() {
   const { Text, Title } = Typography;
@@ -53,6 +53,8 @@ export default function Login() {
             }}
             initialValues={{ remember: true }}
             autoComplete="off"
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
           >
             <Form.Item
               label="Email"
@@ -93,7 +95,8 @@ export default function Login() {
             </Form.Item>
             <Form.Item>
               <Button
-                type="primary"
+                type="submit"
+                htmlType="submit"
                 block
                 className={classes.loginButton}
                 size="large"

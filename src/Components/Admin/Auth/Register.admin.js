@@ -16,7 +16,7 @@ import {
   Typography,
 } from "antd";
 
-import classes from "./Login.module.css";
+import classes from "./Auth.module.css";
 
 import websiteLogo from "./../../../Images/PickBazar.webp";
 
@@ -35,6 +35,14 @@ export default function RegisterAdmin() {
     marginTop: "40px",
   };
 
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div>
       {" "}
@@ -47,14 +55,15 @@ export default function RegisterAdmin() {
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 50 }}
+            initialValues={{ remember: true }}
+            autoComplete="off"
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
             style={{
               maxWidth: "100%",
               textAlign: "center",
-              // backgroundColor: "lightgrey",
               padding: "0px 50px ",
             }}
-            initialValues={{ remember: true }}
-            autoComplete="off"
           >
             <Form.Item
               label="Name"
@@ -99,7 +108,8 @@ export default function RegisterAdmin() {
             </Form.Item>
             <Form.Item>
               <Button
-                type="primary"
+                type="submit"
+                htmlType="submit"
                 block
                 className={classes.loginButton}
                 size="large"

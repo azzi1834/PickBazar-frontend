@@ -13,7 +13,7 @@ import {
   Divider,
   Typography,
 } from "antd";
-import classes from "./Login.module.css";
+import classes from "./Auth.module.css";
 import websiteLogo from "./../../../Images/PickBazar.webp";
 export default function EnterOTPFormAdmin() {
   const { Text, Title } = Typography;
@@ -35,6 +35,14 @@ export default function EnterOTPFormAdmin() {
     return Promise.resolve();
   };
 
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div>
       <Flex style={boxStyle} justify="center" align="center">
@@ -46,14 +54,15 @@ export default function EnterOTPFormAdmin() {
             name="basic"
             labelCol={{ span: 40 }}
             wrapperCol={{ span: 50 }}
+            initialValues={{ remember: true }}
+            autoComplete="off"
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
             style={{
               maxWidth: "100%",
               textAlign: "center",
-              // backgroundColor: "lightgrey",
               padding: "0px 50px ",
             }}
-            initialValues={{ remember: true }}
-            autoComplete="off"
           >
             <Form.Item
               label="Put your token you got from email"
@@ -74,7 +83,8 @@ export default function EnterOTPFormAdmin() {
 
             <Form.Item>
               <Button
-                type="primary"
+                type="submit"
+                htmlType="submit"
                 block
                 className={classes.loginButton}
                 size="large"

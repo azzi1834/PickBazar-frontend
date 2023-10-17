@@ -15,7 +15,7 @@ import {
 } from "antd";
 import classes from "./Auth.module.css";
 import websiteLogo from "./../../../Images/PickBazar.webp";
-export default function ResetNewPasswordAdmin() {
+export default function ResetNewPasswordVendor() {
   const { Text, Title } = Typography;
 
   const boxStyle = {
@@ -37,6 +37,7 @@ export default function ResetNewPasswordAdmin() {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div>
       <Flex style={boxStyle} justify="center" align="center">
@@ -48,10 +49,10 @@ export default function ResetNewPasswordAdmin() {
             name="basic"
             labelCol={{ span: 40 }}
             wrapperCol={{ span: 50 }}
-            initialValues={{ remember: true }}
-            autoComplete="off"
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
+            initialValues={{ remember: true }}
+            autoComplete="off"
             style={{
               maxWidth: "100%",
               textAlign: "center",

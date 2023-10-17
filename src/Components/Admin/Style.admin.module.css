@@ -1,0 +1,59 @@
+.navbar {
+    padding: 17px;
+}
+
+.Siderbaricon {
+    padding-left: 15px;
+}
+
+.dollarIconDiv {
+    background-color: aqua;
+    padding: 16px 24px;
+    margin: 10px 11px 0px 30px;
+    border-radius: 50%;
+}
+
+.shopIconDiv {
+    background-color: rgb(147, 197, 253);
+    padding: 19px 20px;
+    margin: 10px 11px 0px 30px;
+    border-radius: 50%;
+}
+
+.orderIconDiv {
+    padding: 10px 14px;
+    margin: 10px 11px 0px 30px;
+}
+
+.cardHeader {
+    display: flex;
+
+}
+
+.revenueIconDiv {
+    padding: 10px 0px;
+    margin: 10px 11px 0px 30px;
+}
+
+.tables {
+    margin-top: 30px;
+}
+
+.chart {
+    margin-top: 30px;
+}
+
+.tableWithdrawals {
+    margin-left: 20px;
+    overflow-x: scroll;
+}
+
+@media only screen and (max-width: 1000px) {
+    .tableWithdrawals {
+        margin-top: 30px;
+    }
+}
+
+.popularProducts {
+    margin-top: 50px;
+}
