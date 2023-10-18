@@ -1,12 +1,20 @@
 import React from "react";
 
-import { Col, Flex, Row, Space, Table, Tag } from "antd";
+import { Col, Flex, Row, Space, Table, Tag, Layout, theme, Image } from "antd";
 
 import classes from "./Style.admin.module.css";
 
-import { UserOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  EyeOutlined,
+  CloseCircleFilled,
+} from "@ant-design/icons";
 
 import { Input, Typography, Card } from "antd";
+
+import DashboardAdmin from "./Dashboard.admin";
+
+import bedImage from "./Icons/OrderBucket.admin.svg";
 
 export default function ShopsAdmin() {
   const { Title } = Typography;
@@ -52,75 +60,177 @@ export default function ShopsAdmin() {
   const dataTableShops = [
     {
       key: "1",
-      logo: "abc",
+      logo: <Image src={bedImage} width={40} />,
       name: "Furniture Shop",
       owner: "Store owner",
       products: 23,
       orders: 44,
-      status: "Inactive",
-      actions: "Delete",
+      status: <div className={classes.shopStatusInactive}>Inactive</div>,
+      actions: (
+        <div>
+          <CloseCircleFilled
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingRight: "20px",
+            }}
+          />
+          <EyeOutlined
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingLeft: "20px",
+              paddingRight: "0px",
+            }}
+          />{" "}
+        </div>
+      ),
     },
     {
       key: "2",
-      logo: "abc",
+      logo: <Image src={bedImage} width={40} />,
       name: "Furniture Shop",
       owner: "Store owner",
       products: 23,
       orders: 44,
-      status: "Inactive",
-      actions: "Delete",
+      status: <div className={classes.shopStatusActive}>Active</div>,
+      actions: (
+        <div>
+          <CloseCircleFilled
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingRight: "20px",
+            }}
+          />
+          <EyeOutlined
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingLeft: "20px",
+              paddingRight: "0px",
+            }}
+          />{" "}
+        </div>
+      ),
     },
     {
       key: "3",
-      logo: "abc",
+      logo: <Image src={bedImage} width={40} />,
       name: "Furniture Shop",
       owner: "Store owner",
       products: 23,
       orders: 44,
-      status: "Inactive",
-      actions: "Delete",
+      status: <div className={classes.shopStatusInactive}>Inactive</div>,
+      actions: (
+        <div>
+          <CloseCircleFilled
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingRight: "20px",
+            }}
+          />
+          <EyeOutlined
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingLeft: "20px",
+              paddingRight: "0px",
+            }}
+          />{" "}
+        </div>
+      ),
     },
     {
       key: "4",
-      logo: "abc",
+      logo: <Image src={bedImage} width={40} />,
       name: "Furniture Shop",
       owner: "Store owner",
       products: 23,
       orders: 44,
-      status: "Inactive",
-      actions: "Delete",
+      status: <div className={classes.shopStatusInactive}>Inactive</div>,
+      actions: (
+        <div>
+          <CloseCircleFilled
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingRight: "20px",
+            }}
+          />
+          <EyeOutlined
+            style={{
+              fontSize: "20px",
+              cursor: "pointer",
+              paddingLeft: "20px",
+              paddingRight: "0px",
+            }}
+          />{" "}
+        </div>
+      ),
     },
   ];
+  const { Header, Content, Sider } = Layout;
+
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
 
   return (
     <>
-      <Card
+      <DashboardAdmin />
+      <Layout
+        className="site-layout"
         style={{
-          width: 1000,
-          marginTop: 30,
-          marginLeft: "23%",
+          display: "flex",
+          flexDirection: "column",
+          flexWrap: "wrap",
         }}
       >
-        <Flex horizontal justify="start">
-          <div style={{ width: "50%" }}>
-            <Title level={3}>Shops</Title>
-          </div>
-          <div>
-            <Input
-              size="large"
-              placeholder="Search by Name"
-              prefix={<UserOutlined />}
-              style={{ top: 20, width: 500 }}
-            />
-          </div>
-        </Flex>
-      </Card>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}
+        />
+        <Content
+          className="content"
+          style={{
+            margin: "24px 16px 0",
+            overflow: "initial",
+          }}
+        >
+          <Card
+            // span={24}
+            style={{
+              marginTop: 30,
+              marginBottom: 20,
+            }}
+          >
+            <Flex horizontal justify="start">
+              <Col span={12}>
+                <Title level={3}>Shops</Title>
+              </Col>
+              <Col span={12}>
+                <Input
+                  size="large"
+                  placeholder="Search by Name"
+                  prefix={<SearchOutlined />}
+                  style={{ marginTop: "15px" }}
+                />
+              </Col>
+            </Flex>
+          </Card>
 
-      <Table
-        className={classes.tablePopularProducts}
-        columns={columnsTableShops}
-        dataSource={dataTableShops}
-      />
+          <Table
+            className={classes.tableShopDetails}
+            columns={columnsTableShops}
+            dataSource={dataTableShops}
+            scroll={{ x: "100%" }}
+          />
+        </Content>
+      </Layout>
     </>
   );
 }

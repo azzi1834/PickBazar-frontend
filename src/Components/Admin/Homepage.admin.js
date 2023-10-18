@@ -1,11 +1,6 @@
 import React from "react";
 
-import DashbaordIcon from "./Icons/Dashboard.admin.svg";
 import ShopsIcon from "./Icons/Shops.admin.svg";
-import ProductsIcon from "./Icons/Products.admin.svg";
-import SettingsIcon from "./Icons/Settings.admin.svg";
-import OrdersIcon from "./Icons/Orders.admin.svg";
-import ReviewsIcon from "./Icons/Reviews.admin.svg";
 import DollarIcon from "./Icons/Dollar.admin.svg";
 import OrderBucketIcon from "./Icons/OrderBucket.admin.svg";
 import RevenueIcon from "./Icons/Revenue.admin.svg";
@@ -21,64 +16,78 @@ import {
   Row,
   Col,
 } from "antd";
-import { Column } from "@ant-design/charts";
 
-import NavbarAdmin from "./Navbar.admin";
+import { PlusSquareOutlined } from "@ant-design/icons";
+
+import { Column } from "@ant-design/charts";
 
 import classes from "./Style.admin.module.css";
 
-import { Space, Table, Tag } from "antd";
-import { Link, Route, Routes } from "react-router-dom";
-import ShopsAdmin from "./Shops.admin";
+import { Table } from "antd";
+
+import DashboardAdmin from "./Dashboard.admin";
 
 const columnsTableOrders = [
+  {
+    title: "",
+    dataIndex: "iconPlus",
+    key: "iconPlus",
+  },
   {
     title: "Tracking Number",
     dataIndex: "trackingNo",
     key: "trackingNo",
+    width: 200,
   },
   {
     title: "Total",
     dataIndex: "total",
     key: "total",
+    width: 100,
   },
   {
     title: "Order Date",
     dataIndex: "orderDate",
     key: "orderDate",
+    width: 200,
   },
 
   {
     title: "Status",
     dataIndex: "status",
     key: "status",
+    width: 300,
   },
 ];
 const dataTableOrders = [
   {
     key: "1",
-    trackingNo: "John Brown",
+    iconPlus: <PlusSquareOutlined />,
+    trackingNo: "3242343243253",
     total: 32,
     orderDate: "1 oct 2032",
     status: "pending",
   },
   {
     key: "2",
-    trackingNo: "John Brown",
+    iconPlus: <PlusSquareOutlined />,
+    trackingNo: "3242343243253",
     total: 32,
     orderDate: "1 oct 2032",
     status: "pending",
   },
   {
     key: "3",
-    trackingNo: "John Brown",
+    iconPlus: <PlusSquareOutlined />,
+    trackingNo: "3242343243253",
     total: 32,
     orderDate: "1 oct 2032",
     status: "pending",
   },
   {
     key: "4",
-    trackingNo: "John Brown",
+    iconPlus: <PlusSquareOutlined />,
+    trackingNo: "3242343243253",
     total: 32,
     orderDate: "1 oct 2032",
     status: "pending",
@@ -89,28 +98,33 @@ const columnsTableWithdrawals = [
     title: "Shop Name",
     dataIndex: "shopName",
     key: "shopName",
+    width: 500,
   },
   {
     title: "Amount",
     dataIndex: "amount",
     key: "amount",
+    width: 200,
   },
   {
     title: "Status",
     dataIndex: "status",
     key: "status",
+    width: 200,
   },
 
   {
     title: "Created",
     dataIndex: "created",
     key: "created",
+    width: 300,
   },
 
   {
     title: "Actions",
     dataIndex: "actions",
     key: "actions",
+    width: 400,
   },
 ];
 const dataTableWithdrawals = [
@@ -153,33 +167,39 @@ const columnsTablePopularProducts = [
     title: "ID",
     dataIndex: "id",
     key: "id",
+    width: 200,
   },
   {
     title: "Name",
     dataIndex: "name",
     key: "name",
+    width: 500,
   },
   {
     title: "Group",
     dataIndex: "group",
     key: "group",
+    width: 200,
   },
 
   {
     title: "Shop",
     dataIndex: "shop",
     key: "shop",
+    width: 500,
   },
 
   {
     title: "Price/Unit",
     dataIndex: "price",
     key: "price",
+    width: 200,
   },
   {
     title: "Quantity",
     dataIndex: "quantity",
     key: "quantity",
+    width: 300,
   },
 ];
 const dataTablePopularProducts = [
@@ -278,192 +298,148 @@ export default function HomepageAdmin() {
 
   return (
     <>
-      <NavbarAdmin />
-      <Layout hasSider>
-        <Sider
-          style={{
-            overflow: "auto",
-            height: "100vh",
-            position: "fixed",
-            left: 0,
-            top: 80,
-            bottom: 0,
-            right: 0,
-            width: "300px",
-            maxWidth: "300px",
-          }}
-        >
-          <div className="demo-logo-vertical" />
-          <Menu theme="light" mode="inline">
-            <Menu.Item>
-              <Image src={DashbaordIcon} alt="" width={20} />
-              <span className={classes.Siderbaricon}>Dashboard</span>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to={"/admin/shops"}>
-                <Image src={ShopsIcon} alt="" width={20} />
-                <span className={classes.Siderbaricon}>Shops</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Image src={ProductsIcon} alt="" width={20} />
-              <span className={classes.Siderbaricon}>Products</span>
-            </Menu.Item>
-            <Menu.Item>
-              <Image src={ReviewsIcon} alt="ReviewsIcon" width={20} />
-              <span className={classes.Siderbaricon}>Reviews</span>
-            </Menu.Item>
-            <Menu.Item>
-              <Image src={OrdersIcon} alt="OrdersIcon" width={20} />
-              <span className={classes.Siderbaricon}>Orders</span>
-            </Menu.Item>
-            <Menu.Item>
-              <Image src={SettingsIcon} alt="SettingsIcon" width={20} />
-              <span className={classes.Siderbaricon}>Settings</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout
-          className="site-layout"
-          style={{
-            marginLeft: 200,
-          }}
-        >
-          <Header
-            style={{
-              padding: 0,
-              background: colorBgContainer,
-            }}
-          />
-          <Content
-            style={{
-              margin: "24px 16px 0",
-              overflow: "initial",
-            }}
-          >
-            <div>
-              <Row>
-                <Col flex="1 1 200px">
-                  <Card
-                    style={{
-                      width: 270,
-                      marginTop: 30,
-                    }}
-                  >
-                    <div className={classes.cardHeader}>
-                      <div>
-                        <Title level={5}>Total Revenue</Title>
-                        <Text type="secondary">
-                          <strong>(Last 30 Days)</strong>
-                        </Text>
-                      </div>
-                      <div className={classes.dollarIconDiv}>
-                        <Image src={DollarIcon} width={20}></Image>
-                      </div>
-                    </div>
-                    <Title level={3}>$0.00</Title>
-                  </Card>
-                </Col>
-                <Col flex="1 1 200px">
-                  <Card
-                    style={{
-                      width: 270,
-                      marginTop: 30,
-                    }}
-                  >
-                    <div className={classes.cardHeader}>
-                      <div>
-                        <Title level={5}>Total Orders</Title>
-                        <Text type="secondary">
-                          <strong>(Last 30 Days)</strong>
-                        </Text>
-                      </div>
-                      <div className={classes.orderIconDiv}>
-                        <Image src={OrderBucketIcon}></Image>
-                      </div>
-                    </div>
+      <DashboardAdmin />
 
-                    <Title level={3}>0</Title>
-                  </Card>
-                </Col>
-                <Col flex="1 1 200px">
-                  {" "}
-                  <Card
-                    style={{
-                      width: 270,
-                      marginTop: 30,
-                    }}
-                  >
-                    <div className={classes.cardHeader}>
-                      <Title level={5}>Todays Revenue</Title>
-                      <div className={classes.revenueIconDiv}>
-                        <Image src={RevenueIcon}></Image>
-                      </div>
+      <Layout
+        className="site-layout"
+        style={{
+          marginLeft: 200,
+        }}
+      >
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}
+        />
+        <Content
+          style={{
+            margin: "24px 16px 0",
+            overflow: "initial",
+          }}
+        >
+          <div>
+            <Row>
+              <Col flex="1 1 200px">
+                <Card
+                  style={{
+                    width: 270,
+                    marginTop: 30,
+                  }}
+                >
+                  <div className={classes.cardHeader}>
+                    <div>
+                      <Title level={5}>Total Revenue</Title>
+                      <Text type="secondary">
+                        <strong>(Last 30 Days)</strong>
+                      </Text>
                     </div>
-                    <Title level={3}>$0.00</Title>
-                  </Card>
-                </Col>
-                <Col flex="1 1 200px">
-                  {" "}
-                  <Card
-                    style={{
-                      width: 270,
-                      marginTop: 30,
-                    }}
-                  >
-                    <div className={classes.cardHeader}>
-                      <Title level={5}>Total Shops</Title>
-                      <div className={classes.shopIconDiv}>
-                        <Image src={ShopsIcon} width={30}></Image>
-                      </div>
+                    <div className={classes.dollarIconDiv}>
+                      <Image src={DollarIcon} width={20}></Image>
                     </div>
-                    <Title level={3}>0</Title>
-                  </Card>
-                </Col>
-              </Row>
-              <Row className={classes.chart}>
-                <Col span={24}>
-                  <Column {...config} />
-                </Col>
-              </Row>
-              <Row className={classes.tables}>
-                <Col flex="1 1 200px">
-                  <Table
-                    className={classes.tableOrders}
-                    columns={columnsTableOrders}
-                    dataSource={dataTableOrders}
-                    pagination={false}
-                    title={titleOrders}
-                  />
-                </Col>
-                <Col flex="1 1 200px">
-                  {" "}
-                  <Table
-                    className={classes.tableWithdrawals}
-                    columns={columnsTableWithdrawals}
-                    dataSource={dataTableWithdrawals}
-                    pagination={false}
-                    title={titleWithdrawals}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.popularProducts}>
-                <Col span={24}>
-                  <Table
-                    className={classes.tablePopularProducts}
-                    columns={columnsTablePopularProducts}
-                    dataSource={dataTablePopularProducts}
-                    pagination={false}
-                    title={popularProducts}
-                  />
-                </Col>
-              </Row>
-            </div>
-          </Content>
-          <Routes>
-            <Route path="/admin/shops" element={<ShopsAdmin />}></Route>
-          </Routes>
-        </Layout>
+                  </div>
+                  <Title level={3}>$0.00</Title>
+                </Card>
+              </Col>
+              <Col flex="1 1 200px">
+                <Card
+                  style={{
+                    width: 270,
+                    marginTop: 30,
+                  }}
+                >
+                  <div className={classes.cardHeader}>
+                    <div>
+                      <Title level={5}>Total Orders</Title>
+                      <Text type="secondary">
+                        <strong>(Last 30 Days)</strong>
+                      </Text>
+                    </div>
+                    <div className={classes.orderIconDiv}>
+                      <Image src={OrderBucketIcon}></Image>
+                    </div>
+                  </div>
+
+                  <Title level={3}>0</Title>
+                </Card>
+              </Col>
+              <Col flex="1 1 200px">
+                {" "}
+                <Card
+                  style={{
+                    width: 270,
+                    marginTop: 30,
+                  }}
+                >
+                  <div className={classes.cardHeader}>
+                    <Title level={5}>Todays Revenue</Title>
+                    <div className={classes.revenueIconDiv}>
+                      <Image src={RevenueIcon}></Image>
+                    </div>
+                  </div>
+                  <Title level={3}>$0.00</Title>
+                </Card>
+              </Col>
+              <Col flex="1 1 200px">
+                {" "}
+                <Card
+                  style={{
+                    width: 270,
+                    marginTop: 30,
+                  }}
+                >
+                  <div className={classes.cardHeader}>
+                    <Title level={5}>Total Shops</Title>
+                    <div className={classes.shopIconDiv}>
+                      <Image src={ShopsIcon} width={30}></Image>
+                    </div>
+                  </div>
+                  <Title level={3}>0</Title>
+                </Card>
+              </Col>
+            </Row>
+            <Row className={classes.chart}>
+              <Col span={24}>
+                <Column {...config} />
+              </Col>
+            </Row>
+            <Row className={classes.tables}>
+              <Col flex="1 1 200px">
+                <Table
+                  className={classes.tableOrders}
+                  columns={columnsTableOrders}
+                  dataSource={dataTableOrders}
+                  pagination={false}
+                  title={titleOrders}
+                  scroll={{ x: "100%" }}
+                />
+              </Col>
+              <Col flex="1 1 200px">
+                {" "}
+                <Table
+                  className={classes.tableWithdrawals}
+                  columns={columnsTableWithdrawals}
+                  dataSource={dataTableWithdrawals}
+                  pagination={false}
+                  title={titleWithdrawals}
+                  scroll={{ x: "100%" }}
+                />
+              </Col>
+            </Row>
+            <Row className={classes.popularProducts}>
+              <Col span={24}>
+                <Table
+                  className={classes.tablePopularProducts}
+                  columns={columnsTablePopularProducts}
+                  dataSource={dataTablePopularProducts}
+                  pagination={false}
+                  title={popularProducts}
+                  scroll={{ x: "100%" }}
+                />
+              </Col>
+            </Row>
+          </div>
+        </Content>
       </Layout>
     </>
   );

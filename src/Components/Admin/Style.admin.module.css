@@ -45,15 +45,87 @@
 
 .tableWithdrawals {
     margin-left: 20px;
-    overflow-x: scroll;
 }
+
+.tableOrders {}
 
 @media only screen and (max-width: 1000px) {
     .tableWithdrawals {
         margin-top: 30px;
+        margin-left: 0px;
+
     }
+
+    /*
+    .tableOrdersDetails {
+        overflow-x: scroll;
+    }
+
+    .tableShopDetails {
+        overflow-x: scroll;
+    }
+
+    .popularProducts {
+        margin-top: 50px;
+        overflow-x: scroll;
+    } */
+
 }
 
 .popularProducts {
     margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.moreDetailsDots {
+    font-size: 20px;
+}
+
+.filter {
+    color: rgb(56, 148, 118);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.reviewContainer {
+    color: #389475;
+    border: 1px solid #389475;
+    border-radius: 20px;
+    margin: 0px 29px;
+    padding: 5px 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.shopStatusInactive {
+    border: 1px solid rgb(179, 5, 5);
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 0px 30px;
+    background-color: rgb(153, 7, 7);
+    color: white;
+    width: fit-content;
+}
+
+.shopStatusActive {
+    border: 1px solid rgb(56, 148, 118);
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 0px 30px;
+    background-color: rgb(56, 148, 118);
+    color: white;
+    width: fit-content;
+
+}
+
+.site-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: 24px 16px;
 }

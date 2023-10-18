@@ -8,6 +8,9 @@ import ResetNewPasswordAdmin from "../../Components/Admin/Auth/ResetNewPassword.
 import HomepageAdmin from "../../Components/Admin/Homepage.admin";
 import ShopsAdmin from "../../Components/Admin/Shops.admin";
 import OrdersAdmin from "../../Components/Admin/Orders.admin";
+import DashboardAdmin from "../../Components/Admin/Dashboard.admin";
+import ProductsAdmin from "../../Components/Admin/Products.admin";
+import ReviewsAdmin from "../../Components/Admin/Reviews.admin";
 
 export default function AdminPage() {
   return (
@@ -27,6 +30,8 @@ export default function AdminPage() {
         ></Route>
         <Route path="/shops" element={<ShopsAdmin />}></Route>
         <Route path="/orders" element={<OrdersAdmin />}></Route>
+        <Route path="/products" element={<ProductsAdmin />}></Route>
+        <Route path="/reviews" element={<ReviewsAdmin />}></Route>
       </Routes>
     </div>
   );

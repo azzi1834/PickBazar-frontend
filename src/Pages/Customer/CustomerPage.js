@@ -1,6 +1,5 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import RegisterCustomer from "../../Components/Customer/Auth/Register.customer";
 import LoginCustomer from "../../Components/Customer/Auth/Login.customer";
 import ForgotPasswordCustomer from "../../Components/Customer/Auth/ForgotPassword.customer";
@@ -11,7 +10,6 @@ export default function CustomerPage() {
   return (
     <div>
       <ui />
-
       <Routes>
         <Route path="/register" element={<RegisterCustomer />}></Route>
         <Route path="/login" element={<LoginCustomer />}></Route>

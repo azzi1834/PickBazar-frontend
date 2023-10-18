@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AdminPage from "./Pages/Admin/Admin.page";
 import VendorPage from "./Pages/Vendor/Vendor.page";
-import CustomerPage from "./Pages/Customer/Customer.page";
+import CustomerPage from "./Pages/Customer/CustomerPage";
 
 function App() {
   return (
