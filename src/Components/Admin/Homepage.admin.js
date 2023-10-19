@@ -1,9 +1,9 @@
 import React from "react";
 
-import ShopsIcon from "./Icons/Shops.admin.svg";
-import DollarIcon from "./Icons/Dollar.admin.svg";
-import OrderBucketIcon from "./Icons/OrderBucket.admin.svg";
-import RevenueIcon from "./Icons/Revenue.admin.svg";
+import ShopsIcon from "./Icons/Shops.svg";
+import DollarIcon from "./Icons/Dollar.svg";
+import OrderBucketIcon from "./Icons/OrderBucket.svg";
+import RevenueIcon from "./Icons/Revenue.svg";
 
 import {
   Layout,
@@ -267,14 +267,14 @@ export default function HomepageAdmin() {
 
   const data = [
     { month: "January", sales: 190 },
-    { month: "February", sales: 1500 },
+    { month: "February", sales: 700 },
     { month: "March", sales: 10 },
     { month: "April", sales: 152 },
-    { month: "May", sales: 1000 },
+    { month: "May", sales: 500 },
     { month: "June", sales: 140 },
     { month: "July", sales: 500 },
     { month: "August", sales: 200 },
-    { month: "September", sales: 1500 },
+    { month: "September", sales: 600 },
     { month: "October", sales: 100 },
     { month: "November", sales: 150 },
     { month: "December", sales: 151 },
@@ -298,7 +298,128 @@ export default function HomepageAdmin() {
 
   return (
     <>
-      <DashboardAdmin />
+      <div>
+        <Row>
+          <Col flex="1 1 200px">
+            <Card
+              style={{
+                width: 270,
+                marginTop: 30,
+              }}
+            >
+              <div className={classes.cardHeader}>
+                <div>
+                  <Title level={5}>Total Revenue</Title>
+                  <Text type="secondary">
+                    <strong>(Last 30 Days)</strong>
+                  </Text>
+                </div>
+                <div className={classes.dollarIconDiv}>
+                  <Image src={DollarIcon} width={20}></Image>
+                </div>
+              </div>
+              <Title level={3}>$0.00</Title>
+            </Card>
+          </Col>
+          <Col flex="1 1 200px">
+            <Card
+              style={{
+                width: 270,
+                marginTop: 30,
+              }}
+            >
+              <div className={classes.cardHeader}>
+                <div>
+                  <Title level={5}>Total Orders</Title>
+                  <Text type="secondary">
+                    <strong>(Last 30 Days)</strong>
+                  </Text>
+                </div>
+                <div className={classes.orderIconDiv}>
+                  <Image src={OrderBucketIcon}></Image>
+                </div>
+              </div>
+
+              <Title level={3}>0</Title>
+            </Card>
+          </Col>
+          <Col flex="1 1 200px">
+            {" "}
+            <Card
+              style={{
+                width: 270,
+                marginTop: 30,
+              }}
+            >
+              <div className={classes.cardHeader}>
+                <Title level={5}>Todays Revenue</Title>
+                <div className={classes.revenueIconDiv}>
+                  <Image src={RevenueIcon}></Image>
+                </div>
+              </div>
+              <Title level={3}>$0.00</Title>
+            </Card>
+          </Col>
+          <Col flex="1 1 200px">
+            {" "}
+            <Card
+              style={{
+                width: 270,
+                marginTop: 30,
+              }}
+            >
+              <div className={classes.cardHeader}>
+                <Title level={5}>Total Shops</Title>
+                <div className={classes.shopIconDiv}>
+                  <Image src={ShopsIcon} width={30}></Image>
+                </div>
+              </div>
+              <Title level={3}>0</Title>
+            </Card>
+          </Col>
+        </Row>
+        <Row className={classes.chart}>
+          <Col span={24}>
+            <Column {...config} />
+          </Col>
+        </Row>
+        <Row className={classes.tables}>
+          <Col flex="1 1 200px">
+            <Table
+              className={classes.tableOrders}
+              columns={columnsTableOrders}
+              dataSource={dataTableOrders}
+              pagination={false}
+              title={titleOrders}
+              scroll={{ x: "100%" }}
+            />
+          </Col>
+          <Col flex="1 1 200px">
+            {" "}
+            <Table
+              className={classes.tableWithdrawals}
+              columns={columnsTableWithdrawals}
+              dataSource={dataTableWithdrawals}
+              pagination={false}
+              title={titleWithdrawals}
+              scroll={{ x: "100%" }}
+            />
+          </Col>
+        </Row>
+        <Row className={classes.popularProducts}>
+          <Col span={24}>
+            <Table
+              className={classes.tablePopularProducts}
+              columns={columnsTablePopularProducts}
+              dataSource={dataTablePopularProducts}
+              pagination={false}
+              title={popularProducts}
+              scroll={{ x: "100%" }}
+            />
+          </Col>
+        </Row>
+      </div>
+      {/* <DashboardAdmin />
 
       <Layout
         className="site-layout"
@@ -440,7 +561,7 @@ export default function HomepageAdmin() {
             </Row>
           </div>
         </Content>
-      </Layout>
+      </Layout> */}
     </>
   );
 }

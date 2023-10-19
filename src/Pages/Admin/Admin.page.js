@@ -11,12 +11,17 @@ import OrdersAdmin from "../../Components/Admin/Orders.admin";
 import DashboardAdmin from "../../Components/Admin/Dashboard.admin";
 import ProductsAdmin from "../../Components/Admin/Products.admin";
 import ReviewsAdmin from "../../Components/Admin/Reviews.admin";
+import AdminLayout from "../../Components/Admin/Dashboard.admin";
+import SettingsAdmin from "../../Components/Admin/Settings.admin";
 
 export default function AdminPage() {
   return (
     <div>
       <Routes>
-        <Route path="/dashboard" element={<HomepageAdmin />}></Route>
+        <Route
+          path="/dashboard"
+          element={<AdminLayout Component={HomepageAdmin} />}
+        ></Route>
         <Route path="/register" element={<RegisterAdmin />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route
@@ -28,10 +33,27 @@ export default function AdminPage() {
           path="/reset-new-password"
           element={<ResetNewPasswordAdmin />}
         ></Route>
-        <Route path="/shops" element={<ShopsAdmin />}></Route>
-        <Route path="/orders" element={<OrdersAdmin />}></Route>
-        <Route path="/products" element={<ProductsAdmin />}></Route>
-        <Route path="/reviews" element={<ReviewsAdmin />}></Route>
+        <Route
+          path="/shops"
+          element={<AdminLayout Component={ShopsAdmin} />}
+        ></Route>
+        <Route
+          path="/orders"
+          element={<AdminLayout Component={OrdersAdmin} />}
+        ></Route>
+        <Route
+          path="/products"
+          element={<AdminLayout Component={ProductsAdmin} />}
+        ></Route>
+        <Route
+          path="/reviews"
+          element={<AdminLayout Component={ReviewsAdmin} />}
+        ></Route>
+        <Route path="/settings" element={<SettingsAdmin />}></Route>
+        {/* <Route
+          path="/settings"
+          element={<AdminLayout Component={SettingsAdmin} />}
+        ></Route> */}
       </Routes>
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Col, Flex, Row, Space, Table, Tag, Layout, theme } from "antd";
 
-import classes from "./Style.admin.module.css";
+import classes from "./Style.vendor.module.css";
 
 import { SearchOutlined, MoreOutlined } from "@ant-design/icons";
 
@@ -10,9 +10,7 @@ import { Input, Typography, Card } from "antd";
 
 import { PlusSquareOutlined, EyeOutlined } from "@ant-design/icons";
 
-import DashboardAdmin from "./Dashboard.admin";
-
-export default function OrdersAdmin() {
+export default function VenderOrders() {
   const { Title } = Typography;
   const columnsTableShops = [
     {

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Col, Flex, Row, Space, Table, Tag, Layout, theme, Image } from "antd";
 
-import classes from "./Style.admin.module.css";
+import classes from "./Style.vendor.module.css";
 
 import {
   DeleteTwoTone,
@@ -14,11 +14,9 @@ import {
 
 import { Input, Typography, Card } from "antd";
 
-import DashboardAdmin from "./Dashboard.admin";
-
 import bedImage from "./Icons/OrderBucket.svg";
 
-export default function ReviewsAdmin() {
+export default function VendorReviews() {
   const { Title } = Typography;
   const columnsTableShops = [
     {
