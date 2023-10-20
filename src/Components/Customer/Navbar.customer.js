@@ -1,6 +1,18 @@
 import React from "react";
 
-import { Menu, Image, Dropdown, Typography, Select } from "antd";
+import {
+  Menu,
+  Image,
+  Dropdown,
+  Typography,
+  Select,
+  Divider,
+  Button,
+  Layout,
+  Avatar,
+  Row,
+  Col,
+} from "antd";
 
 import websiteLogo from "./../../Images/PickBazar.webp";
 
@@ -8,24 +20,22 @@ import classes from "./Style.customer.module.css";
 
 import { Link } from "react-router-dom";
 
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, DownOutlined } from "@ant-design/icons";
 
 export default function CustomerNavbar() {
   const { Title } = Typography;
   const { Option } = Select;
 
+  const { Header } = Layout;
+
   const items = [
     {
       label: (
         <div style={{ backgroundColor: "rgb(56,148,118)", color: "white" }}>
-          <strong>Customer</strong>
-          <p>customer@gmail.com</p>
+          <strong>Points</strong>
         </div>
       ),
       key: "0",
-    },
-    {
-      type: "divider",
     },
     {
       label: (
@@ -36,7 +46,28 @@ export default function CustomerNavbar() {
       key: "1",
     },
     {
-      type: "divider",
+      label: (
+        <Link to={"/customer/orders"}>
+          <strong>My Orders</strong>
+        </Link>
+      ),
+      key: "2",
+    },
+    {
+      label: (
+        <Link to={"/customer/wishlist"}>
+          <strong>My Wishlists</strong>
+        </Link>
+      ),
+      key: "3",
+    },
+    {
+      label: (
+        <Link to={"/customer/checkout"}>
+          <strong>Checkout</strong>
+        </Link>
+      ),
+      key: "4",
     },
     {
       label: (
@@ -44,9 +75,10 @@ export default function CustomerNavbar() {
           <strong>Logout</strong>
         </Link>
       ),
-      key: "2",
+      key: "5",
     },
   ];
+
   const menu = (
     <Menu>
       {items.map((item) => (
@@ -56,9 +88,9 @@ export default function CustomerNavbar() {
             item.key === "0"
               ? {
                   backgroundColor: "rgb(56, 148, 118)",
-                  padding: "10px 60px 2px 10px",
+                  padding: "10px 120px 10px 10px",
                 }
-              : null
+              : { padding: "10px 120px 10px 10px" }
           }
         >
           {item.label}
@@ -66,130 +98,79 @@ export default function CustomerNavbar() {
       ))}
     </Menu>
   );
+  const categoriesItems = ["Bakery", "Grocery", "Makeup"];
+  const children = [];
+  categoriesItems.map((item, index) => {
+    children.push(
+      <Option key={index}>
+        <Link to={`/customer/${item}`}>{item}</Link>
+      </Option>
+    );
+  });
+
   return (
     <div>
-      <Menu
-        mode="horizontal"
-        theme="light"
-        defaultSelectedKeys={["1"]}
-        className={classes.navbar}
+      <Header
         style={{
-          position: "fixed",
-          width: "100%",
-          zIndex: 1,
-          marginBottom: "20px",
-          color: "black",
-          // display: "flex",
-          // justifyContent: "space-between",
+          backgroundColor: "transparent",
+          height: "auto",
         }}
       >
-        <Menu.Item key="0" style={{ display: "flex", justifyContent: "start" }}>
-          <Link to={"/admin/dasboard"}>
-            <Image src={websiteLogo} alt="PickBazar" width={130} />
-          </Link>
-        </Menu.Item>
-        <Menu.Item style={{ width: "20%" }}>
-          <Select
-            showSearch
-            size="medium"
-            style={{ width: "100%" }}
-            optionFilterProp="children"
-            filterOption={(input, option) =>
-              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-            }
-            defaultValue={"option1"}
-          >
-            <Option value="option1">
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Bakery
+        <Row justify="space-between" align="middle">
+          <Col>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Link to={"/admin/dasboard"} style={{ marginRight: "40px" }}>
+                <Image src={websiteLogo} alt="PickBazar" width={130} />
               </Link>
-            </Option>
-            <Option value="option2">
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
+              <div style={{ width: "200px" }}>
+                <Select
+                  allowClear
+                  style={{ width: "100%" }}
+                  placeholder="Please select"
+                  defaultValue={[]}
+                >
+                  {children}
+                </Select>
+              </div>
+            </div>
+          </Col>
+          <Col>
+            <div style={{ display: "flex" }}>
+              <Button
+                type="primary"
+                style={{
+                  backgroundColor: "rgb(56,148,118)",
+                  color: "white",
+                  margin: "27px 0px",
+                }}
               >
-                Grocery
-              </Link>
-            </Option>
-            <Option value="option3">
-              {" "}
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Makeup
-              </Link>
-            </Option>
-            <Option value="option4">
-              {" "}
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Bags
-              </Link>
-            </Option>
-            <Option value="option4">
-              {" "}
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Clothings
-              </Link>
-            </Option>
-            <Option value="option4">
-              {" "}
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Furniture
-              </Link>
-            </Option>
-            <Option value="option4">
-              {" "}
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Daily Needs
-              </Link>
-            </Option>
-            <Option value="option4">
-              {" "}
-              <Link
-                to={"/customer/bakery"}
-                style={{ color: "rgb(56,148,118)", fontWeight: "bold" }}
-              >
-                Books
-              </Link>
-            </Option>
-          </Select>
-        </Menu.Item>
-        <Menu.Item
-          key="profile"
-          style={{ display: "flex", alignItems: "flex-end" }}
-        >
-          <div
-            style={{
-              border: "1px solid black",
-              borderRadius: "50%",
-              padding: "1px 18px",
-              textDecoration: "none",
-            }}
-          >
-            {" "}
-            <Dropdown overlay={menu} trigger={["click"]}>
-              <UserOutlined style={{ fontSize: "15px" }} />
-            </Dropdown>
-          </div>
-        </Menu.Item>
-      </Menu>
+                Become a Seller
+              </Button>
+              <div>
+                <div
+                  style={{
+                    border: "1px solid black",
+                    borderRadius: "50%",
+                    padding: "0px 15px",
+                    textDecoration: "none",
+                    zIndex: 1,
+                    margin: "10px 0px 15px 20px",
+                  }}
+                >
+                  <Dropdown overlay={menu} trigger={["click"]}>
+                    <UserOutlined style={{ fontSize: "15px" }} />
+                  </Dropdown>
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Header>
     </div>
   );
 }

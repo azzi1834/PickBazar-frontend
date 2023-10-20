@@ -49,11 +49,10 @@ export default function AdminPage() {
           path="/reviews"
           element={<AdminLayout Component={ReviewsAdmin} />}
         ></Route>
-        <Route path="/settings" element={<SettingsAdmin />}></Route>
-        {/* <Route
+        <Route
           path="/settings"
           element={<AdminLayout Component={SettingsAdmin} />}
-        ></Route> */}
+        ></Route>
       </Routes>
     </div>
   );
