@@ -8,6 +8,8 @@ import EnterOTPFormCustomer from "../../Components/Customer/Auth/EnterOTPForm.cu
 import ResetNewPasswordCustomer from "../../Components/Customer/Auth/ResetNewPassword.customer";
 import CustomerLandingPage from "../../Components/Customer/LandingPage.customer";
 import CustomerProducts from "../../Components/Customer/Products.customer";
+import CustomerOrdersList from "../../Components/Customer/OrdersList.customer";
+import CustomerOrderDetails from "../../Components/Customer/OrderDetails.customer";
 
 export default function CustomerPage() {
   return (
@@ -28,6 +30,8 @@ export default function CustomerPage() {
         ></Route>
         <Route path="/bakery" element={<CustomerLandingPage />}></Route>
         <Route path="/products" element={<CustomerProducts />}></Route>
+        <Route path="/orderlist" element={<CustomerOrdersList />}></Route>
+        <Route path="/orderDetails" element={<CustomerOrderDetails />}></Route>
       </Routes>
     </div>
   );
