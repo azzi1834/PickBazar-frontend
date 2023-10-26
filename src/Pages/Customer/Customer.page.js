@@ -10,6 +10,7 @@ import CustomerLandingPage from "../../Components/Customer/LandingPage.customer"
 import CustomerProducts from "../../Components/Customer/Products.customer";
 import CustomerOrdersList from "../../Components/Customer/OrdersList.customer";
 import CustomerOrderDetails from "../../Components/Customer/OrderDetails.customer";
+import MyOrderCustomer from "../../Components/Customer/MyOrder.customer";
 
 export default function CustomerPage() {
   return (
@@ -18,20 +19,26 @@ export default function CustomerPage() {
 
       <Routes>
         <Route path="/register" element={<RegisterCustomer />}></Route>
+
         <Route path="/login" element={<LoginCustomer />}></Route>
+
         <Route
           path="/forgot-password"
           element={<ForgotPasswordCustomer />}
         ></Route>
+
         <Route path="/otp" element={<EnterOTPFormCustomer />}></Route>
+
         <Route
           path="/reset-new-password"
           element={<ResetNewPasswordCustomer />}
         ></Route>
+
         <Route path="/bakery" element={<CustomerLandingPage />}></Route>
+
         <Route path="/products" element={<CustomerProducts />}></Route>
-        <Route path="/orderlist" element={<CustomerOrdersList />}></Route>
-        <Route path="/orderDetails" element={<CustomerOrderDetails />}></Route>
+
+        <Route path="/orders" element={<MyOrderCustomer />}></Route>
       </Routes>
     </div>
   );

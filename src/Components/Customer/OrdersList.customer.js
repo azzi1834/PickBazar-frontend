@@ -32,7 +32,6 @@ export default function CustomerOrdersList() {
 
   return (
     <>
-      <CustomerNavbar />
       <div
         style={{
           backgroundColor: "white",

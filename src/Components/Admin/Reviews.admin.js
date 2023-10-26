@@ -292,47 +292,6 @@ export default function ReviewsAdmin() {
         dataSource={dataTableShops}
         scroll={{ x: "100%" }}
       />
-      {/* <DashboardAdmin />
-      <Layout
-        className="site-layout"
-        style={{
-          marginLeft: 200,
-        }}
-      >
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-        <Content
-          style={{
-            margin: "24px 16px 0",
-            overflow: "initial",
-          }}
-        >
-          <Card
-            span={24}
-            style={{
-              marginTop: 30,
-              marginBottom: 20,
-            }}
-          >
-            <Flex horizontal justify="start">
-              <Col span={24}>
-                <Title level={3}>Reviews</Title>
-              </Col>
-            </Flex>
-          </Card>
-
-          <Table
-            className={classes.tableReviews}
-            columns={columnsTableShops}
-            dataSource={dataTableShops}
-            scroll={{ x: "100%" }}
-          />
-        </Content>
-      </Layout> */}
     </>
   );
 }

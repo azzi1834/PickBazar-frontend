@@ -1,3 +1,5 @@
+@media only screen and (max-width: 1000px) {}
+
 .navbar {
     padding: 17px;
 }
@@ -47,30 +49,7 @@
     margin-left: 20px;
 }
 
-.tableOrders {}
 
-@media only screen and (max-width: 1000px) {
-    .tableWithdrawals {
-        margin-top: 30px;
-        margin-left: 0px;
-
-    }
-
-    /*
-    .tableOrdersDetails {
-        overflow-x: scroll;
-    }
-
-    .tableShopDetails {
-        overflow-x: scroll;
-    }
-
-    .popularProducts {
-        margin-top: 50px;
-        overflow-x: scroll;
-    } */
-
-}
 
 .popularProducts {
     margin-top: 50px;
