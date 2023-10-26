@@ -1,0 +1,25 @@
+.orderPaymentStatus {
+    margin: 20px;
+}
+
+.buttons {
+    padding: 40px;
+    margin: 0px 10px;
+}
+
+.addressDetails {
+    margin: 20px;
+}
+
+.billDetails {
+    margin: 20px;
+}
+
+.orderSteps {
+    margin: 30px 20px;
+}
+
+.orderDetails {
+    background-color: white;
+    padding: 30px;
+}

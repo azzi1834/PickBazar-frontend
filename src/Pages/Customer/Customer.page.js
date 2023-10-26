@@ -11,6 +11,15 @@ import CustomerProducts from "../../Components/Customer/Products.customer";
 import CustomerOrdersList from "../../Components/Customer/OrdersList.customer";
 import CustomerOrderDetails from "../../Components/Customer/OrderDetails.customer";
 import MyOrderCustomer from "../../Components/Customer/MyOrder.customer";
+import OrderCard from "../../Components/Customer/Orders/OrderList/OrderCard";
+import OrderList from "../../Components/Customer/Orders/OrderList";
+import OrderAndPaymentStatus from "../../Components/Customer/Orders/OrderDetails/OrderAndPaymentStatus";
+import OrderAddressDetails from "../../Components/Customer/Orders/OrderDetails/OrderAddressDetails";
+import BillDetails from "../../Components/Customer/Orders/OrderDetails/BillDetails";
+import OrderStatus from "../../Components/Customer/Orders/OrderDetails/OrderStatus";
+import OrderProducts from "../../Components/Customer/Orders/OrderDetails/OrderProducts";
+import OrderDetails from "../../Components/Customer/Orders/OrderDetails";
+import Orders from "../../Components/Customer/Orders";
 
 export default function CustomerPage() {
   return (
@@ -38,7 +47,10 @@ export default function CustomerPage() {
 
         <Route path="/products" element={<CustomerProducts />}></Route>
 
-        <Route path="/orders" element={<MyOrderCustomer />}></Route>
+        <Route path="/orders" element={<Orders />}></Route>
+
+        {/* testing routes  */}
+        <Route path="/order-card" element={<OrderList />}></Route>
       </Routes>
     </div>
   );

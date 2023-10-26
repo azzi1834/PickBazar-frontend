@@ -1,0 +1,29 @@
+.card {
+    background-color: rgb(237, 235, 235, 0.5);
+    margin: 0px 10px 10px 10px;
+    cursor: pointer;
+}
+
+.orderListBody {
+    padding: 20px;
+    background-color: white;
+}
+
+.scrollList {
+    height: 650px;
+    overflow-y: scroll;
+}
+
+.scrollList::-webkit-scrollbar {
+    width: 2px;
+}
+
+.scrollList::-webkit-scrollbar-track {
+    background-color: rgb(209, 209, 209);
+}
+
+.scrollList::-webkit-scrollbar-thumb {
+    background-color: rgb(77, 76, 76);
+    border-radius: 10px;
+    height: 30px;
+}
