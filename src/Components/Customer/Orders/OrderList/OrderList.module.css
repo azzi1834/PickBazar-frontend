@@ -4,6 +4,21 @@
     cursor: pointer;
 }
 
+.card:active {
+    border: 2px solid rgb(56, 148, 118);
+}
+
+.card:hover {
+    border: 2px solid rgb(56, 148, 118);
+
+}
+
+
+.selected_Card {
+    border: 2px solid rgb(56, 148, 118);
+
+}
+
 .orderListBody {
     padding: 20px;
     background-color: white;

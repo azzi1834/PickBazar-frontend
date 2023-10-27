@@ -4,23 +4,17 @@ import { Typography } from "antd";
 
 import classes from "./OrderDetails.module.css";
 
-export default function OrderAddressDetails() {
+export default function OrderAddressDetails({ result }) {
   const { Title, Text } = Typography;
 
   const textArr = [
     {
       title: "Shipping Address",
-      description: "mermoz, Dakar, Dakar, 38169, Sénégal",
+      description: result.ShippingAddress,
     },
     {
       title: "Billing Address",
-      description:
-        " Voluptatum qui sunt, Quod et consequatur, Ipsum qui minus sint, 51397, Aut fugiat iusto do",
-    },
-    {
-      title: "Billing Address",
-      description:
-        " Voluptatum qui sunt, Quod et consequatur, Ipsum qui minus sint, 51397, Aut fugiat iusto do",
+      description: result.BillingAddress,
     },
   ];
 

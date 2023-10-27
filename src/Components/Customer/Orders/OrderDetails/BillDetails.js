@@ -4,7 +4,7 @@ import { Typography } from "antd";
 
 import classes from "./OrderDetails.module.css";
 
-export default function BillDetails() {
+export default function BillDetails({ result }) {
   const { Title, Text } = Typography;
 
   return (
@@ -19,19 +19,19 @@ export default function BillDetails() {
         <div style={{ marginRight: "auto" }}>
           <Text type="secondary">Discount</Text>
         </div>
-        <div style={{ marginRight: "10px" }}>Rs.100</div>
+        <div style={{ marginRight: "10px" }}>Rs.{result.Discount}</div>
       </div>
       <div style={{ display: "flex", margin: "10px 0px" }}>
         <div style={{ marginRight: "auto" }}>
           <Text type="secondary">Delivery Fee</Text>
         </div>
-        <div style={{ marginRight: "10px" }}>Rs.50</div>
+        <div style={{ marginRight: "10px" }}>Rs.{result.ShippingCharge}</div>
       </div>
       <div style={{ display: "flex", margin: "10px 0px" }}>
         <div style={{ marginRight: "auto" }}>
           <Text type="secondary">Tax</Text>
         </div>
-        <div style={{ marginRight: "10px" }}>Rs.0.10</div>
+        <div style={{ marginRight: "10px" }}>Rs.{result.Tax}</div>
       </div>
       <div style={{ display: "flex", margin: "10px 0px" }}>
         <div style={{ marginRight: "auto" }}>
@@ -39,7 +39,7 @@ export default function BillDetails() {
             <strong>Total</strong>
           </Text>
         </div>
-        <div style={{ marginRight: "10px" }}>Rs.710</div>
+        <div style={{ marginRight: "10px" }}>Rs.{result.Total}</div>
       </div>
     </div>
   );

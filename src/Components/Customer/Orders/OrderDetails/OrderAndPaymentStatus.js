@@ -4,7 +4,7 @@ import { Col, Row, Typography, Button, Flex } from "antd";
 
 import classes from "./OrderDetails.module.css";
 
-export default function OrderAndPaymentStatus() {
+export default function OrderAndPaymentStatus({ result }) {
   const { Title, Text } = Typography;
 
   return (
@@ -22,7 +22,7 @@ export default function OrderAndPaymentStatus() {
               backgroundColor: "#f1e9d7",
             }}
           >
-            Order Pending
+            Order {result.OrderStatus}
           </Text>
         </div>
         <div>
@@ -37,7 +37,7 @@ export default function OrderAndPaymentStatus() {
               backgroundColor: "#f1e9d7",
             }}
           >
-            Payment Pending
+            Payment {result.PaymentStatus}
           </Text>
         </div>
 

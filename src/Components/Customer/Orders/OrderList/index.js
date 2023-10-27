@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Typography } from "antd";
+import { Button, Typography } from "antd";
 
 import OrderCard from "./OrderCard";
 
 import classes from "./OrderList.module.css";
 
-export default function OrderList() {
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
+export default function OrderList({ ordersData, handleOrderId }) {
   const { Title } = Typography;
 
   return (
@@ -15,7 +19,7 @@ export default function OrderList() {
         <Title level={4} style={{ marginLeft: "10px" }}>
           My Orders
         </Title>
-        <OrderCard />
+        <OrderCard ordersData={ordersData} handleOrderId={handleOrderId} />
       </div>
     </>
   );
