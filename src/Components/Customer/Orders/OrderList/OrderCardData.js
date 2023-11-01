@@ -7,6 +7,8 @@ import { Card, Row, Col } from "antd";
 export default function OrderCardData({ ordersData, handleOrderId }) {
   const [selectedCard, setSelectedCard] = useState(null);
 
+  const [activeCard, setActiveCard] = useState(0);
+
   useEffect(() => {
     if (ordersData.length > 0) {
       handleOrderId(ordersData[0]._id);
@@ -33,12 +35,29 @@ export default function OrderCardData({ ordersData, handleOrderId }) {
             <Card
               key={index}
               title={"Order No#" + option._id}
-              extra={option.OrderStatus}
-              // className={classes.card}
+              extra={
+                <span
+                  className={
+                    option.OrderStatus === "Completed"
+                      ? classes.orderStatusCompleted
+                      : option.OrderStatus === "Cancelled"
+                      ? classes.orderStatusCancelled
+                      : classes.orderStatusPending
+                  }
+                >
+                  {option.OrderStatus}
+                </span>
+              }
               className={`${classes.card} ${
-                selectedCard === index ? classes.selected_Card : ""
+                activeCard === index ? "card-active" : ""
               }`}
-              onClick={() => handleOrderId(option._id)}
+              style={{
+                border: activeCard === index ? "2px solid rgb(56,148,118)" : "",
+              }}
+              onClick={() => {
+                handleOrderId(option._id);
+                setActiveCard(index);
+              }}
             >
               <Row>
                 <Col span={10}>Order Date</Col>

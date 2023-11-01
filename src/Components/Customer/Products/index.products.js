@@ -1,72 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import axios from "axios";
 
 import { Button, Card, Row, Col } from "antd";
 
-import AppleImage from "./ProductImages/Apples.webp";
-import OrangeImage from "./ProductImages/oranges.webp";
+import AppleImage from "../ProductImages/Apples.webp";
+import OrangeImage from "../ProductImages/oranges.webp";
 
-export default function CustomerProducts() {
+export default function Products() {
   const { Meta } = Card;
 
-  const [quantity, setQuantity] = useState(0);
+  const [productQuantities, setProductQuantities] = useState({});
 
-  const [showAdd, setShowAdd] = useState(true);
+  const [products, setProducts] = useState([]);
 
-  // if (quantity === 1 || quantity >= 1) {
-  //   setShowAdd(false);
-  // }
-  const productItems = [
-    {
-      image: AppleImage,
-      name: "Apples",
-      unitPrice: "100",
-      salePrice: "89",
-    },
-    {
-      image: OrangeImage,
-      name: "Oranges",
-      unitPrice: "50",
-      salePrice: "40",
-    },
-    {
-      image: OrangeImage,
-      name: "Oranges",
-      unitPrice: "50",
-      salePrice: "40",
-    },
-    {
-      image: OrangeImage,
-      name: "Oranges",
-      unitPrice: "50",
-      salePrice: "40",
-    },
-    {
-      image: OrangeImage,
-      name: "Oranges",
-      unitPrice: "50",
-      salePrice: "40",
-    },
-    {
-      image: OrangeImage,
-      name: "Oranges",
-      unitPrice: "50",
-      salePrice: "40",
-    },
-  ];
+  const fetchProducts = async () => {
+    try {
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzhjNmJmMzMxNzBiZDQ1MDFjYTRjYiIsImVtYWlsIjoiY3VzdG9tZXI1QGdtYWlsLmNvbSIsImlhdCI6MTY5ODM4MDk5Nn0.fjyOPWpzZuygXn8va7jT2qyoj0j_RSKXhBnODCDaPxQ";
 
-  const handleDecrease = () => {
-    setQuantity(quantity - 1);
+      const response = await axios.get(
+        `${process.env.REACT_APP_TEST_URL}/customer/product`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setProducts(response?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log("Products", products);
+
+  const handleDecrease = (id) => {
+    setProductQuantities((prevQuantities) => {
+      const updatedQuantities = { ...prevQuantities };
+      if (updatedQuantities[id] && updatedQuantities[id] > 0) {
+        updatedQuantities[id] -= 1;
+      }
+      console.log(updatedQuantities);
+      return updatedQuantities;
+    });
   };
 
-  const handleIncrease = () => {
-    setQuantity(quantity + 1);
+  const handleIncrease = (id) => {
+    setProductQuantities((prevQuantities) => {
+      const updatedQuantities = { ...prevQuantities };
+      updatedQuantities[id] = (updatedQuantities[id] || 0) + 1;
+      console.log(updatedQuantities);
+      return updatedQuantities;
+    });
   };
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
     <>
       <div style={{ margin: "20px" }}>
         <Row gutter={16}>
-          {productItems.map((option, index) => {
+          {products.map((option, index) => {
             return (
               <Col span={6} key={index}>
                 <Card
@@ -76,7 +72,7 @@ export default function CustomerProducts() {
                     width: 290,
                     marginBottom: "20px",
                   }}
-                  cover={<img alt="apple" src={option.image} />}
+                  cover={<img alt="apple" src={OrangeImage} />}
                 >
                   <Meta
                     title={
@@ -90,7 +86,7 @@ export default function CustomerProducts() {
                             color: "#5c5a5a",
                           }}
                         >
-                          <del>Rs.{option.unitPrice}</del>
+                          <del>Rs.{option.price}</del>
                         </span>
                       </div>
                     }
@@ -103,12 +99,11 @@ export default function CustomerProducts() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      // backgroundColor: "rgb(56,148,118)",
                     }}
                   >
                     <Button
                       key={index}
-                      onClick={handleDecrease}
+                      onClick={() => handleDecrease(option._id)}
                       style={{
                         backgroundColor: "rgb(56,148,118)",
                         color: "white",
@@ -123,10 +118,10 @@ export default function CustomerProducts() {
                         padding: "4px 65px",
                       }}
                     >
-                      {quantity}
+                      {productQuantities[option._id] || 0}
                     </span>
                     <Button
-                      onClick={handleIncrease}
+                      onClick={() => handleIncrease(option._id)}
                       style={{
                         backgroundColor: "rgb(56,148,118)",
                         color: "white",

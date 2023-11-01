@@ -40,7 +40,6 @@ export default function Orders() {
   }, []);
   const handleOrderId = (id) => {
     setOrderId(id);
-    console.log("order id in parent", id);
   };
   console.log(ordersData);
 

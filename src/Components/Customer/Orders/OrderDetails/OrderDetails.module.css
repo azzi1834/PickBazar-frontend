@@ -1,25 +1,47 @@
 .orderPaymentStatus {
-    margin: 20px;
+  margin: 20px;
 }
 
 .buttons {
-    padding: 40px;
-    margin: 0px 10px;
+  padding: 40px;
+  margin: 0px 10px;
 }
 
 .addressDetails {
-    margin: 20px;
+  margin: 20px;
 }
 
 .billDetails {
-    margin: 20px;
+  margin: 20px;
 }
 
 .orderSteps {
-    margin: 30px 20px;
+  margin: 30px 20px;
 }
 
 .orderDetails {
-    background-color: white;
-    padding: 30px;
+  background-color: white;
+  padding: 30px;
+}
+
+.orderStatusPending {
+  border: 1px solid #eee5d3;
+  padding: 10px;
+  background-color: #eee5d3;
+  border-radius: 10px;
+  color: #c8a446;
+}
+.orderStatusCompleted {
+  border: 1px solid #d4eae7;
+  padding: 10px;
+  background-color: #d4eae7;
+  border-radius: 10px;
+  color: #3fa180;
+}
+.orderStatusCancelled {
+  border: 1px solid #f4e1d6;
+  padding: 10px;
+  background-color: #f4e1d6;
+  border-radius: 10px;
+  color: #ea7f32;
 }

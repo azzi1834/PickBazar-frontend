@@ -1,0 +1,40 @@
+.cartBox {
+  padding: 15px 10px;
+  width: fit-content;
+  background-color: rgb(56, 148, 118);
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  top: 50%;
+  right: 0px;
+}
+.price {
+  background-color: white;
+  padding: 10px 20px;
+  color: rgb(56, 148, 118);
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.checkoutBox {
+  border: 1px solid rgb(56, 148, 118);
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(56, 148, 118);
+  margin-top: auto;
+}
+.checkoutPrice {
+  background-color: white;
+  padding: 10px 20px;
+  color: rgb(56, 148, 118);
+  border-radius: 25px;
+  margin-left: 10px;
+}
+.changeQuantity {
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 15px;
+}

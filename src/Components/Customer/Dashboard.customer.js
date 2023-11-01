@@ -5,9 +5,11 @@ import { Typography, Input, Button, Flex } from "antd";
 import CustomerNavbar from "./Navbar.customer";
 
 import GroceryBgImg from "./../../Images/grocery.webp";
-import CustomerProducts from "./Products.customer";
 
-export default function CustomerLandingPage() {
+import Products from "./Products/index.products";
+import Cart from "./Cart/index.cart";
+
+export default function CustomerDashboard() {
   const { Title } = Typography;
 
   const { Search } = Input;
@@ -53,8 +55,22 @@ export default function CustomerLandingPage() {
           </Flex>
         </div>
       </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          height: "100vh",
+          position: "fixed",
+          right: 0,
+          top: 0,
+          zIndex: 1,
+        }}
+      >
+        <Cart />
+      </div>
       <div style={{ marginTop: "auto" }}>
-        <CustomerProducts />
+        <Products />
       </div>
     </>
   );
