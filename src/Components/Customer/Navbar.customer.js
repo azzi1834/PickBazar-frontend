@@ -114,6 +114,7 @@ export default function CustomerNavbar() {
         style={{
           backgroundColor: "transparent",
           height: "auto",
+          padding: "0px 15px",
         }}
       >
         <Row justify="space-between" align="middle">
@@ -154,16 +155,16 @@ export default function CustomerNavbar() {
               <div>
                 <div
                   style={{
-                    border: "1px solid black",
-                    borderRadius: "50%",
-                    padding: "0px 15px",
-                    textDecoration: "none",
-                    zIndex: 1,
                     margin: "10px 0px 15px 20px",
                   }}
                 >
                   <Dropdown overlay={menu} trigger={["click"]}>
-                    <UserOutlined style={{ fontSize: "15px" }} />
+                    {/* <UserOutlined style={{ fontSize: "15px" }} /> */}
+                    <Avatar
+                      size={50}
+                      icon={<UserOutlined />}
+                      style={{ cursor: "pointer" }}
+                    />
                   </Dropdown>
                 </div>
               </div>

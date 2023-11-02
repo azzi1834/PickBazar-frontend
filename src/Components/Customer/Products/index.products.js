@@ -58,6 +58,7 @@ export default function Products() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
   return (
     <>
       <div style={{ margin: "20px" }}>

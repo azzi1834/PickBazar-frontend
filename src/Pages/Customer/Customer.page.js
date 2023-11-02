@@ -10,6 +10,7 @@ import Orders from "../../Components/Customer/Orders";
 import CustomerDashboard from "../../Components/Customer/Dashboard.customer";
 import Products from "../../Components/Customer/Products/index.products";
 import Cart from "../../Components/Customer/Cart/index.cart";
+import Pagination from "../../Components/Customer/Pagination";
 
 export default function CustomerPage() {
   return (
@@ -40,7 +41,7 @@ export default function CustomerPage() {
         <Route path="/orders" element={<Orders />}></Route>
 
         {/* testing routes  */}
-        <Route path="/ordercard" element={<Cart />}></Route>
+        <Route path="/ordercard" element={<Pagination />}></Route>
       </Routes>
     </div>
   );

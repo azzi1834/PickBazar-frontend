@@ -1,110 +1,118 @@
-@media only screen and (max-width: 1000px) {}
+@media only screen and (max-width: 1000px) {
+}
 
 .navbar {
-    padding: 17px;
+  padding: 17px;
 }
 
 .Siderbaricon {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 .dollarIconDiv {
-    background-color: aqua;
-    padding: 16px 24px;
-    margin: 10px 11px 0px 30px;
-    border-radius: 50%;
+  background-color: aqua;
+  padding: 16px 24px;
+  margin: 10px 11px 0px 30px;
+  border-radius: 50%;
 }
 
 .shopIconDiv {
-    background-color: rgb(147, 197, 253);
-    padding: 19px 20px;
-    margin: 10px 11px 0px 30px;
-    border-radius: 50%;
+  background-color: rgb(147, 197, 253);
+  padding: 19px 20px;
+  margin: 10px 11px 0px 30px;
+  border-radius: 50%;
 }
 
 .orderIconDiv {
-    padding: 10px 14px;
-    margin: 10px 11px 0px 30px;
+  padding: 10px 14px;
+  margin: 10px 11px 0px 30px;
 }
 
 .cardHeader {
-    display: flex;
-
+  display: flex;
 }
 
 .revenueIconDiv {
-    padding: 10px 0px;
-    margin: 10px 11px 0px 30px;
+  padding: 10px 0px;
+  margin: 10px 11px 0px 30px;
 }
 
 .tables {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .chart {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .tableWithdrawals {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
-
-
 .popularProducts {
-    margin-top: 50px;
-    margin-bottom: 40px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .moreDetailsDots {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .filter {
-    color: rgb(56, 148, 118);
-    padding: 10px;
-    cursor: pointer;
+  color: rgb(56, 148, 118);
+  padding: 10px;
+  cursor: pointer;
 }
 
 .reviewContainer {
-    color: #389475;
-    border: 1px solid #389475;
-    border-radius: 20px;
-    margin: 0px 29px;
-    padding: 5px 10px;
-    font-size: 15px;
-    text-align: center;
+  color: #389475;
+  border: 1px solid #389475;
+  border-radius: 20px;
+  margin: 0px 29px;
+  padding: 5px 10px;
+  font-size: 15px;
+  text-align: center;
 }
 
 .shopStatusInactive {
-    border: 1px solid rgb(179, 5, 5);
-    text-align: center;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin: 0px 30px;
-    background-color: rgb(153, 7, 7);
-    color: white;
-    width: fit-content;
+  border: 1px solid rgb(179, 5, 5);
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin: 0px 30px;
+  background-color: rgb(153, 7, 7);
+  color: white;
+  width: fit-content;
 }
 
 .shopStatusActive {
-    border: 1px solid rgb(56, 148, 118);
-    text-align: center;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin: 0px 30px;
-    background-color: rgb(56, 148, 118);
-    color: white;
-    width: fit-content;
-
+  border: 1px solid rgb(56, 148, 118);
+  text-align: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin: 0px 30px;
+  background-color: rgb(56, 148, 118);
+  color: white;
+  width: fit-content;
 }
 
 .site-layout {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
-    flex: 1;
-    padding: 24px 16px;
+  flex: 1;
+  padding: 24px 16px;
+}
+
+.cartBox {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  margin-top: 17%;
 }

@@ -45,16 +45,16 @@ export default function CheckoutDrawer() {
   return (
     <>
       <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          height: "100vh",
-          position: "fixed",
-          right: 0,
-          top: 0,
-          zIndex: 1,
-        }}
+      // style={{
+      //   display: "flex",
+      //   justifyContent: "flex-end",
+      //   alignItems: "center",
+      //   height: "100vh",
+      //   position: "fixed",
+      //   right: 0,
+      //   top: 0,
+      //   zIndex: 1,
+      // }}
       >
         <Flex
           justify="center"

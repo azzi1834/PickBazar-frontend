@@ -9,6 +9,8 @@ import GroceryBgImg from "./../../Images/grocery.webp";
 import Products from "./Products/index.products";
 import Cart from "./Cart/index.cart";
 
+import classes from "./Style.customer.module.css";
+
 export default function CustomerDashboard() {
   const { Title } = Typography;
 
@@ -55,22 +57,12 @@ export default function CustomerDashboard() {
           </Flex>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          height: "100vh",
-          position: "fixed",
-          right: 0,
-          top: 0,
-          zIndex: 1,
-        }}
-      >
-        <Cart />
-      </div>
+
       <div style={{ marginTop: "auto" }}>
         <Products />
+      </div>
+      <div className={classes.cartBox}>
+        <Cart />
       </div>
     </>
   );
