@@ -4,9 +4,7 @@ import {
   Menu,
   Image,
   Dropdown,
-  Typography,
   Select,
-  Divider,
   Button,
   Layout,
   Avatar,
@@ -20,10 +18,9 @@ import classes from "./Style.customer.module.css";
 
 import { Link } from "react-router-dom";
 
-import { UserOutlined, DownOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 
 export default function CustomerNavbar() {
-  const { Title } = Typography;
   const { Option } = Select;
 
   const { Header } = Layout;
