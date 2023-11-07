@@ -159,7 +159,6 @@ export default function CustomerNavbar() {
                   }}
                 >
                   <Dropdown overlay={menu} trigger={["click"]}>
-                    {/* <UserOutlined style={{ fontSize: "15px" }} /> */}
                     <Avatar
                       size={50}
                       icon={<UserOutlined />}
