@@ -14,26 +14,74 @@ export default function Products() {
 
   const [products, setProducts] = useState([]);
 
-  const fetchProducts = async () => {
-    try {
+  // const fetchProducts = async () => {
+  //   try {
+  //     const token =
+  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzhjNmJmMzMxNzBiZDQ1MDFjYTRjYiIsImVtYWlsIjoiY3VzdG9tZXI1QGdtYWlsLmNvbSIsImlhdCI6MTY5ODM4MDk5Nn0.fjyOPWpzZuygXn8va7jT2qyoj0j_RSKXhBnODCDaPxQ";
+
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_TEST_URL}/customer/product`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     setProducts(response?.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // console.log("Products", products);
+
+  //Axios call with interceptor
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_TEST_URL,
+  });
+
+  //Request Interceptor
+  axiosInstance.interceptors.request.use(
+    (config) => {
       const token =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzhjNmJmMzMxNzBiZDQ1MDFjYTRjYiIsImVtYWlsIjoiY3VzdG9tZXI1QGdtYWlsLmNvbSIsImlhdCI6MTY5ODM4MDk5Nn0.fjyOPWpzZuygXn8va7jT2qyoj0j_RSKXhBnODCDaPxQ";
 
-      const response = await axios.get(
-        `${process.env.REACT_APP_TEST_URL}/customer/product`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      config.headers.Authorization = `Bearer ${token}`;
+      config.headers["Content-Type"] = "application/json";
+
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  // Response Interceptor
+  axiosInstance.interceptors.request.use(
+    (response) => {
+      return response;
+    },
+    function (error) {
+      const ans = error.config;
+      console.log("response config", ans);
+    }
+  );
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axiosInstance.get(`/customer/product`);
+
       setProducts(response?.data);
     } catch (error) {
-      console.log(error);
+      if (error.response) {
+        console.log("Response Status:", error.response.status);
+
+        console.log("Response Data:", error.response.data);
+      } else {
+        console.log("Error:", error.message);
+      }
     }
   };
-  console.log("Products", products);
 
   const handleDecrease = (id) => {
     setProductQuantities((prevQuantities) => {

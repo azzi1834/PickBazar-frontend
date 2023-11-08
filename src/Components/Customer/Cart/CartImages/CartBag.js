@@ -2,7 +2,7 @@ import React from "react";
 
 export default function cartBag() {
   return (
-    <svg width="14" height="16" class="shrink-0" viewBox="0 0 12.686 16">
+    <svg width="14" height="16" className="shrink-0" viewBox="0 0 12.686 16">
       <g transform="translate(-27.023 -2)">
         <g transform="translate(27.023 5.156)">
           <g>
