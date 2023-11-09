@@ -14,7 +14,7 @@ import {
 
 import websiteLogo from "./../../Images/PickBazar.webp";
 
-import classes from "./Style.customer.module.css";
+// import classes from "./Style.customer.module.css";
 
 import { Link } from "react-router-dom";
 

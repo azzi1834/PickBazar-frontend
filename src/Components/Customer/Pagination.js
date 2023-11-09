@@ -1,52 +1,78 @@
 import React, { useEffect, useState } from "react";
 
-import { Space, Table, Tag, Pagination } from "antd";
+import { Table } from "antd";
 
-import axios from "axios";
+import { axiosInstance } from "../AxiosInterceptors";
+
+import { useQuery } from "@tanstack/react-query";
 
 export default function PaginationPage() {
-  const [newdata, setData] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(0);
 
   const [pageSize, setPageSize] = useState(2);
 
-  const [quantity, setQuantity] = useState(null);
-
-  const totalPages = Math.ceil(quantity / pageSize);
-
-  const [pagination, setPagination] = useState({
-    current: 1, // Current page
-    pageSize: pageSize, // Number of items per page
-  });
-
   const fetchData = async (page, pageSize) => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_TEST_URL}/script/pagination?page=${page}&size=${pageSize}`
+      const response = await axiosInstance.get(
+        `/script/pagination/items?page=${page}&size=${pageSize}`
       );
 
-      setData(response?.data?.data);
+      if (!response.status === 200) {
+        console.log("some thing error");
+      }
+
+      console.log("items response", response.data.data);
+
+      return response.data.data;
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    fetchQuantity();
+    fetchData(currentPage, pageSize);
+  }, []);
 
   const fetchQuantity = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_TEST_URL}/script/itemsQuantity`
-      );
+      const response = await axiosInstance.get(`/script/itemsQuantity`);
 
-      console.log("quantity", response?.data?.quantity);
+      if (!response === 200) {
+        console.log("error");
+      }
 
-      setQuantity(response?.data?.quantity);
+      return response.data.quantity;
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(newdata);
+  let fetchQuantityObj = {
+    queryKey: ["Quantity"],
+    queryFn: fetchQuantity,
+  };
+
+  let fetchItemsObj = {
+    queryKey: ["fetchItems"],
+    queryFn: fetchData,
+  };
+
+  const fetchedQuantity = useQuery(fetchQuantityObj);
+
+  const fetchedItems = useQuery(fetchItemsObj);
+
+  if (fetchedQuantity.isLoading) return "loading...";
+
+  if (fetchedQuantity.isError)
+    return "an error occurred" + fetchedQuantity.error.message;
+
+  console.log("quantity", fetchedQuantity.data);
+
+  if (fetchedItems.isError)
+    return "an error occurred" + fetchedItems.error.message;
+
+  console.log("items", fetchedItems.data);
 
   const columns = [
     {
@@ -71,7 +97,7 @@ export default function PaginationPage() {
     },
   ];
 
-  const data = newdata.map((item, index) => ({
+  const tableData = fetchedItems.data.map((item, index) => ({
     name: item.name,
 
     price: item.price,
@@ -86,18 +112,14 @@ export default function PaginationPage() {
 
     fetchData(page.current - 1, pageSize);
   };
-  useEffect(() => {
-    fetchQuantity();
-    fetchData(currentPage, pageSize);
-  }, []);
 
   return (
     <>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={tableData}
         pagination={{
-          total: quantity,
+          total: fetchedQuantity.data,
           pageSize: pageSize,
           current: currentPage === 0 ? currentPage + 1 : currentPage,
         }}
@@ -106,14 +128,6 @@ export default function PaginationPage() {
           handlePageChange(pagination);
         }}
       />
-
-      {/* <Pagination
-        defaultCurrent={1}
-        total={quantity}
-        pageSize={pageSize}
-        current={currentPage === 0 ? currentPage + 1 : currentPage}
-        onChange={handlePageChange}
-      /> */}
     </>
   );
 }

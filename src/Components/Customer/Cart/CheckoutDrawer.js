@@ -7,9 +7,13 @@ import classes from "./Style.cart.module.css";
 import { CloseOutlined, MinusOutlined, PlusOutlined } from "@ant-design/icons";
 
 import CartBagIcon from "./CartImages/CartBag";
+
 import CartBagIconFilled from "./CartImages/CartBagFilled";
+
 import EmptyCartImage from "./CartImages/EmptyCart";
+
 import Apples from "../ProductImages/Apples.webp";
+
 export default function CheckoutDrawer() {
   const [open, setOpen] = useState(false);
 
@@ -44,18 +48,7 @@ export default function CheckoutDrawer() {
 
   return (
     <>
-      <div
-      // style={{
-      //   display: "flex",
-      //   justifyContent: "flex-end",
-      //   alignItems: "center",
-      //   height: "100vh",
-      //   position: "fixed",
-      //   right: 0,
-      //   top: 0,
-      //   zIndex: 1,
-      // }}
-      >
+      <div>
         <Flex
           justify="center"
           align="center"
@@ -111,6 +104,7 @@ export default function CheckoutDrawer() {
             </Flex>
           </div>
         </Flex> */}
+
         {/* if cart has items */}
 
         <div className={classes.drawerBody}>

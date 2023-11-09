@@ -1,40 +1,17 @@
-import React, { useEffect, useState } from "react";
-
-import axios from "axios";
+import React, { useState } from "react";
 
 import { Button, Card, Row, Col } from "antd";
 
-import AppleImage from "../ProductImages/Apples.webp";
+import { useQuery } from "@tanstack/react-query";
+
 import OrangeImage from "../ProductImages/oranges.webp";
+
+import { axiosInstance } from "../../AxiosInterceptors";
 
 export default function Products() {
   const { Meta } = Card;
 
   const [productQuantities, setProductQuantities] = useState({});
-
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MzhjNmJmMzMxNzBiZDQ1MDFjYTRjYiIsImVtYWlsIjoiY3VzdG9tZXI1QGdtYWlsLmNvbSIsImlhdCI6MTY5ODM4MDk5Nn0.fjyOPWpzZuygXn8va7jT2qyoj0j_RSKXhBnODCDaPxQ";
-
-      const response = await axios.get(
-        `${process.env.REACT_APP_TEST_URL}/customer/product`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      
-      setProducts(response?.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log("Products", products);
 
   const handleDecrease = (id) => {
     setProductQuantities((prevQuantities) => {
@@ -56,15 +33,37 @@ export default function Products() {
     });
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const fetchProducts = async () => {
+    try {
+      const response = await axiosInstance.get(`/customer/product`);
+      if (!response.status === 200) {
+        console.log("some thing error");
+      }
+      console.log("response", response);
+      return response.data;
+    } catch (error) {
+      console.log("products fetching error", error);
+    }
+  };
+
+  let queryObj = {
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  };
+
+  const { isLoading, isError, data, error } = useQuery(queryObj);
+
+  if (isLoading) return "loading...";
+
+  if (isError) return "an error occurred" + error.message;
+
+  console.log("query data", data);
 
   return (
     <>
       <div style={{ margin: "20px" }}>
         <Row gutter={16}>
-          {products.map((option, index) => {
+          {data.map((option, index) => {
             return (
               <Col span={6} key={index}>
                 <Card
